@@ -1,6 +1,10 @@
 package normalize
 
-import "time"
+import (
+	"time"
+
+	"github.com/kwkuh/whois-engine/internal/dnsx"
+)
 
 type Source string
 
@@ -24,6 +28,7 @@ type DomainInfo struct {
 	Raw         string    `json:"raw,omitempty"`
 	Error       string    `json:"error,omitempty"`
 	LookupMS    int64     `json:"lookup_ms"`
+	DNS         *dnsx.Record `json:"dns,omitempty"`
 }
 
 func (d *DomainInfo) DaysToExpiry() int {
